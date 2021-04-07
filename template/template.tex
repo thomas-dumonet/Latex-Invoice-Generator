@@ -1,0 +1,200 @@
+\documentclass[a4paper]{article}
+%
+% YAIT: yet another invoice template
+%
+% This file is a very straightforward and easy to tweak invoice template,
+% originally written by Elie Roux.
+%
+% Sources are available at https://github.com/eroux/latex-yait
+%
+% and are under the CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+% license.
+%
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{blindtext}
+\usepackage{microtype}
+\usepackage{etoolbox}
+\usepackage[default]{lato}
+\usepackage[francais]{babel}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{inconsolata}
+
+\let\spacedFont\relax
+\let\displayFont\relax
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{libertine}
+
+% Template command to compile the empty template if needed
+
+\newcommand{\VAR}[1]{}
+\newcommand{\BLOCK}[1]{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+% content definition %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Facture}
+\date{\today }
+\xdef\invoicenum{\VAR{invoice_number}}
+\xdef\invoicedate{\VAR{invoice_date}}
+\xdef\companyname{\VAR{company_name}}
+\xdef\firstname{\VAR{first_name}}
+\xdef\lastname{\VAR{last_name}}
+\xdef\companyaddress{\VAR{full_address}}
+\xdef\companysiret{\VAR{company_siret}}
+\xdef\companysiren{\VAR{company_siren}}
+\xdef\companytel{\VAR{company_phone}}
+\xdef\companyemail{\VAR{company_email}}
+\xdef\bankiban{\VAR{bank_iban}}
+\xdef\bankbic{\VAR{bank_bic}}
+\xdef\clientname{\VAR{client_name}}
+\xdef\cliendadressstreet{\VAR{client_address_first_line}}
+\xdef\clientadresscity{\VAR{client_address_second_line}}
+\long\xdef\conditions{}
+
+\makeatletter
+\let\thetitle\@title
+\makeatother
+
+\usepackage[pdfencoding=auto,unicode, bookmarks=false, colorlinks=false, pdfborder={0 0 0},pdftitle={Invoice from Thomas Dumonet}, pdfauthor={Thomas Dumonet}, pdfsubject={Invoice}, pdfkeywords={Invoice, Thomas Dumonet}]{hyperref}
+\pagestyle{empty}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage[norule]{footmisc}
+
+%%%%%%%%%%%%%%%%%%%%%
+% color definitions %
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\colorlet{headcolor}{gray!21}
+\colorlet{tablecolor1}{gray!4}
+\colorlet{tablecolor2}{gray!11}
+\colorlet{footnotegray}{gray!90}
+
+% the right shift of the right blocks
+\xdef\rightalignment{11cm}
+
+% footnote style
+\def\footnotestyle#1{%
+  {\textsf{\color{footnotegray}\fontsize{3mm}{0mm}\selectfont #1}}%
+}
+
+% change color of footnote marks
+\makeatletter
+\renewcommand\@makefntext[1]{%
+  \parindent 1em\noindent
+  \hb@xt@1.8em{%
+  \hss\@textsuperscript{\normalfont\color{footnotegray}\@thefnmark}}#1}
+\makeatother
+
+\begin{document}
+
+\noindent\parbox[b][2cm][t]{\rightalignment}{{\color{gray!80!black}\displayFont\fontsize{1.5cm}{1.5cm}\selectfont %
+\vbox to 1cm{\vss %
+%
+\firstname%
+%
+}}
+{\color{gray!80!black}\displayFont\fontsize{1.3cm}{1.5cm}\selectfont %
+\vbox to 1cm{\vss %
+%
+\lastname%
+%
+}}
+\vskip 0.3cm
+\color{gray!80!black}
+\normalsize
+\companyaddress{},\\
+\companytel{},\\
+\companyemail{},\\
+SIRET\,: \companysiret{}\\ 
+\small Dispensé d’immatriculation au registre du commerce\\
+et des sociétés (RCS) et au répertoire des métiers
+}%
+%
+\parbox[b][2cm][t]{0.35\textwidth}{\ttfamily {%
+{\selectfont %
+\vbox to 1cm{\vss \leavevmode %
+%
+\begin{flushright}
+\color{gray!10!black}
+Facture N\textsuperscript{o} \invoicenum\\
+\invoicedate%
+\end{flushright}
+%
+}}}}
+\vskip 0.3cm
+
+\leavevmode\kern \rightalignment\kern -3mm \colorbox{gray!85}{
+  \kern 1mm\begin{minipage}[t]{0.5\textwidth}
+    \color{white}
+    \vskip 2mm
+    \textbf{\fontsize{0.5cm}{0.5cm}\selectfont \clientname{}}
+    \expandafter\ifblank\expandafter{\cliendadressstreet}{}{,\\\cliendadressstreet}
+    \expandafter\ifblank\expandafter{\clientadresscity}{}{,\\\clientadresscity}\\
+    \vspace*{-3mm}%
+  \end{minipage}
+}
+
+\vskip 2.3cm
+
+\begin{center}
+{\ttfamily\LARGE \thetitle}
+
+\rule{2cm}{0.25pt}
+\end{center}
+
+\bgroup
+\setlength{\tabcolsep}{24pt}
+% \setlength{\extrarowheight}{24pt}
+\def\arraystretch{2}
+\rowcolors{2}{gray!25}{white}
+\begin{tabularx}{\textwidth}{lccX}
+  \rowcolor{gray!40}
+  \bfseries\centering Désignation prestation & \bfseries\centering Prix unitaire(H.T) & \bfseries\centering Quantité & \bfseries\centering Prix (H.T)\tabularnewline
+  \BLOCK{ for dict_item in items }
+        \VAR{dict_item["product_name"]} & \VAR{dict_item["price"]} \,€ & \VAR{dict_item["quantity"]} & \VAR{dict_item["total"]} \,€\\
+  \BLOCK{ endfor }
+  \bfseries Total (H.T.) & & & \bfseries \VAR{total_price}\\
+\end{tabularx}
+\egroup
+
+\begin{flushright}
+\vskip -0.3cm
+\color{gray!10!black}
+\footnotestyle{TVA non applicable, art. 293B du CGI}
+\end{flushright}
+
+
+\vfill
+
+
+\color{gray!60!black}
+\setlength{\columnsep}{1.5cm}
+\noindent Règlement : Virement
+\begin{multicols}{2}
+\noindent\companyname{},\\
+Auto-entrepreneur {\small \ttfamily (APE 7410Z)},\\
+\rmfamily \companyaddress{},\\
+\rmfamily SIREN\,: \ttfamily \small \companysiren{},\\
+\hbox to 1cm{\rmfamily Tél\,:\hss} \ttfamily \small \companytel,\\
+\hbox to 1cm{\rmfamily Mail\,:\hss} \companyemail,\\
+\hbox to 1cm{\rmfamily IBAN\,:\hss} \ttfamily \small \bankiban,\\
+\hbox to 1cm{\rmfamily BIC\,:\hss} \ttfamily \small \bankbic
+\end{multicols}
+
+\noindent \footnotestyle{\textbf{Conditions de paiement:} Paiement à réception de la facture.\\
+Aucun escompte consenti pour règlement anticipé\\
+Tout incident de paiement est passible d'intérêt de retard.\\
+Le montant des pénalités résulte de l'application aux sommes restant dues d'un taux d'intérêt légal en vigueur au moment de l'incident.\\
+Indemnité forfaitaire pour frais de recouvrement due au créancier en cas de retard de paiement: 40€. }
+
+\end{document}
