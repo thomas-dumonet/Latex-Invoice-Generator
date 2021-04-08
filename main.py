@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+import unidecode
 import json
 from Pyinstaller_util import get_resource_path, get_config_path, get_exe_path, create_path_it_not_exist
 from SaveData import SaveData, GeneralInfo, ClientInfo, InvoiceInfo, InvoiceItem
@@ -81,7 +82,8 @@ class MainWindow(QDialog):
     def generate_invoice(self):
         print("generating invoice")
         self.save_data()
-        self.texGenerator.render(SaveData.asflatdict(self.currentInvoiceInfo), create_path_it_not_exist(os.path.join(self.outputPath, self.currentInvoiceInfo.invoice_number,self.currentInvoiceInfo.invoice_number+'.tex')))
+        filename = ''.join(e for e in unidecode.unidecode(self.currentInvoiceInfo.client.name) if e.isalnum())
+        self.texGenerator.render(SaveData.asflatdict(self.currentInvoiceInfo), create_path_it_not_exist(os.path.join(self.outputPath, self.currentInvoiceInfo.invoice_number,self.currentInvoiceInfo.invoice_number+'_'+filename+'.tex')))
         self.update_ui()
 
     def recall_general_info(self, company_name):
