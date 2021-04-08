@@ -17,6 +17,7 @@ class LatexTemplateGenerator:
 			line_comment_prefix = '%#',
 			trim_blocks = True,
 			autoescape = False,
+			extensions=["jinja2.ext.do", ],
 			loader = jinja2.FileSystemLoader(templatePath)
 		)
 

@@ -64,11 +64,12 @@ class ClientInfo:
 
 
 class InvoiceInfo:
-    def __init__(self, invoice_number=None, invoice_date=None, general=None, client=None, items=[]):
+    def __init__(self, invoice_number=None, invoice_date=None, invoice_name=None, general=None, client=None, items=[]):
         self.general = general
         self.client = client
         self.invoice_number = invoice_number
         self.invoice_date = invoice_date
+        self.invoice_name = invoice_name
         self.items = items
 
     def asdict(self):
@@ -80,6 +81,7 @@ class InvoiceInfo:
                 'client': self.client.asdict(),
                 'invoice_number': self.invoice_number,
                 'invoice_date': self.invoice_date,
+                'invoice_name': self.invoice_name,
                 'items': newItemList}
 
     @classmethod
@@ -95,6 +97,7 @@ class InvoiceInfo:
         newinvoice.client = ClientInfo.fromdict(dict_from['client'])
         newinvoice.invoice_number = dict_from['invoice_number']
         newinvoice.invoice_date = dict_from['invoice_date']
+        newinvoice.invoice_name = dict_from.get('invoice_name', '')
         newinvoice.items = newItemList
         return newinvoice
 
@@ -141,6 +144,7 @@ class SaveData:
         flatdict = {
             'invoice_number': invoice.invoice_number,
             'invoice_date': invoice.invoice_date,
+            'invoice_name': invoice.invoice_name,
             'company_name': invoice.general.company_name,
             'first_name': invoice.general.first_name,
             'last_name': invoice.general.last_name,

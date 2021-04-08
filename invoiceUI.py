@@ -365,7 +365,10 @@ class Ui_Dialog(object):
         self.progressBar = QProgressBar(Dialog)
         self.progressBar.setObjectName(u"progressBar")
         self.progressBar.setEnabled(False)
+        self.progressBar.setMaximum(1)
         self.progressBar.setValue(0)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setInvertedAppearance(False)
 
         self.horizontalLayout_invoice.addWidget(self.progressBar)
 

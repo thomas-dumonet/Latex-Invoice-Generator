@@ -37,7 +37,7 @@
 % content definition %
 %%%%%%%%%%%%%%%%%%%%%%
 
-\title{Facture}
+\title{Facture \VAR{invoice_name}}
 \date{\today }
 \xdef\invoicenum{\VAR{invoice_number}}
 \xdef\invoicedate{\VAR{invoice_date}}
@@ -137,9 +137,7 @@ Facture N\textsuperscript{o} \invoicenum\\
   \kern 1mm\begin{minipage}[t]{0.5\textwidth}
     \color{white}
     \vskip 2mm
-    \textbf{\fontsize{0.5cm}{0.5cm}\selectfont \clientname{}}
-    \expandafter\ifblank\expandafter{\cliendadressstreet}{}{,\\\cliendadressstreet}
-    \expandafter\ifblank\expandafter{\clientadresscity}{}{,\\\clientadresscity}\\
+    \textbf{\fontsize{0.5cm}{0.5cm}\selectfont \clientname{}}\expandafter\ifblank\expandafter{\cliendadressstreet}{}{,\\\cliendadressstreet}\expandafter\ifblank\expandafter{\clientadresscity}{}{,\\\clientadresscity}\\
     \vspace*{-3mm}%
   \end{minipage}
 }
@@ -152,6 +150,7 @@ Facture N\textsuperscript{o} \invoicenum\\
 \rule{2cm}{0.25pt}
 \end{center}
 
+\begin{center}
 \bgroup
 \setlength{\tabcolsep}{24pt}
 % \setlength{\extrarowheight}{24pt}
@@ -160,10 +159,12 @@ Facture N\textsuperscript{o} \invoicenum\\
 \begin{tabularx}{\textwidth}{lccX}
   \rowcolor{gray!40}
   \bfseries\centering Désignation prestation & \bfseries\centering Prix unitaire(H.T) & \bfseries\centering Quantité & \bfseries\centering Prix (H.T)\tabularnewline
+  \BLOCK{ set totals = [] }
   \BLOCK{ for dict_item in items }
-        \VAR{dict_item["product_name"]} & \VAR{dict_item["price"]} \,€ & \VAR{dict_item["quantity"]} & \VAR{dict_item["total"]} \,€\\
+        \VAR{dict_item["product_name"]} & \VAR{dict_item["price"]|round|int} \,€ & \VAR{dict_item["quantity"]} & \VAR{ (dict_item["price"] * dict_item["quantity"])|round|int } \,€\\
+        \BLOCK{ if totals.append((dict_item["price"] * dict_item["quantity"])|round|int)} \BLOCK{endif}
   \BLOCK{ endfor }
-  \bfseries Total (H.T.) & & & \bfseries \VAR{total_price}\\
+  \bfseries Total (H.T.) & & & \bfseries \VAR{ totals | sum } \,€\\
 \end{tabularx}
 \egroup
 
@@ -172,7 +173,7 @@ Facture N\textsuperscript{o} \invoicenum\\
 \color{gray!10!black}
 \footnotestyle{TVA non applicable, art. 293B du CGI}
 \end{flushright}
-
+\end{center}
 
 \vfill
 
