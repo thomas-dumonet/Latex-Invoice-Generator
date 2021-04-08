@@ -49,6 +49,7 @@
 \xdef\companysiren{\VAR{company_siren}}
 \xdef\companytel{\VAR{company_phone}}
 \xdef\companyemail{\VAR{company_email}}
+\xdef\companyape{\VAR{company_ape}}
 \xdef\bankiban{\VAR{bank_iban}}
 \xdef\bankbic{\VAR{bank_bic}}
 \xdef\clientname{\VAR{client_name}}
@@ -183,7 +184,7 @@ Facture N\textsuperscript{o} \invoicenum\\
 \noindent Règlement : Virement
 \begin{multicols}{2}
 \noindent\companyname{},\\
-Auto-entrepreneur {\small \ttfamily (APE 7410Z)},\\
+Auto-entrepreneur {\small \ttfamily (APE \companyape)},\\
 \rmfamily \companyaddress{},\\
 \rmfamily SIREN\,: \ttfamily \small \companysiren{},\\
 \hbox to 1cm{\rmfamily Tél\,:\hss} \ttfamily \small \companytel,\\

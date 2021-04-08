@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>762</width>
-    <height>843</height>
+    <width>546</width>
+    <height>895</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -39,8 +39,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>727</width>
-        <height>797</height>
+        <width>528</width>
+        <height>846</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -196,7 +196,7 @@
               </property>
              </widget>
             </item>
-            <item row="7" column="0">
+            <item row="8" column="0">
              <widget class="QLabel" name="label_companyTelephon">
               <property name="minimumSize">
                <size>
@@ -209,14 +209,14 @@
               </property>
              </widget>
             </item>
-            <item row="8" column="0">
+            <item row="9" column="0">
              <widget class="QLabel" name="label_bankIBAN">
               <property name="text">
                <string>bank IBAN</string>
               </property>
              </widget>
             </item>
-            <item row="9" column="0">
+            <item row="10" column="0">
              <widget class="QLabel" name="label_bankBIC">
               <property name="minimumSize">
                <size>
@@ -238,24 +238,34 @@
             <item row="5" column="1">
              <widget class="QLineEdit" name="lineEdit_companySIREN"/>
             </item>
-            <item row="7" column="1">
+            <item row="8" column="1">
              <widget class="QLineEdit" name="lineEdit_companyTelephone"/>
             </item>
-            <item row="8" column="1">
+            <item row="9" column="1">
              <widget class="QLineEdit" name="lineEdit_bankIBAN"/>
             </item>
-            <item row="9" column="1">
+            <item row="10" column="1">
              <widget class="QLineEdit" name="lineEdit_bankBIC"/>
             </item>
-            <item row="6" column="0">
+            <item row="7" column="0">
              <widget class="QLabel" name="label_companyEmail">
               <property name="text">
                <string>Company Email</string>
               </property>
              </widget>
             </item>
-            <item row="6" column="1">
+            <item row="7" column="1">
              <widget class="QLineEdit" name="lineEdit_companyEmail"/>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_companyAPE">
+              <property name="text">
+               <string>Company APE</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="lineEdit_companyAPE"/>
             </item>
            </layout>
           </item>
@@ -503,6 +513,7 @@
   <tabstop>lineEdit_fullAddress</tabstop>
   <tabstop>lineEdit_companySIRET</tabstop>
   <tabstop>lineEdit_companySIREN</tabstop>
+  <tabstop>lineEdit_companyAPE</tabstop>
   <tabstop>lineEdit_companyEmail</tabstop>
   <tabstop>lineEdit_companyTelephone</tabstop>
   <tabstop>lineEdit_bankIBAN</tabstop>

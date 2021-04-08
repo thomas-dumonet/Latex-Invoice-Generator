@@ -19,7 +19,7 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(762, 843)
+        Dialog.resize(546, 895)
         Dialog.setMinimumSize(QSize(400, 400))
         self.verticalLayout_7 = QVBoxLayout(Dialog)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
@@ -31,7 +31,7 @@ class Ui_Dialog(object):
         self.scrollArea_main.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 727, 797))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 528, 846))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.groupBox_quickRecall = QGroupBox(self.scrollAreaWidgetContents)
@@ -163,18 +163,18 @@ class Ui_Dialog(object):
         self.label_companyTelephon.setObjectName(u"label_companyTelephon")
         self.label_companyTelephon.setMinimumSize(QSize(0, 0))
 
-        self.formLayout_generalInfo.setWidget(7, QFormLayout.LabelRole, self.label_companyTelephon)
+        self.formLayout_generalInfo.setWidget(8, QFormLayout.LabelRole, self.label_companyTelephon)
 
         self.label_bankIBAN = QLabel(self.groupBox_generalInfo)
         self.label_bankIBAN.setObjectName(u"label_bankIBAN")
 
-        self.formLayout_generalInfo.setWidget(8, QFormLayout.LabelRole, self.label_bankIBAN)
+        self.formLayout_generalInfo.setWidget(9, QFormLayout.LabelRole, self.label_bankIBAN)
 
         self.label_bankBIC = QLabel(self.groupBox_generalInfo)
         self.label_bankBIC.setObjectName(u"label_bankBIC")
         self.label_bankBIC.setMinimumSize(QSize(100, 0))
 
-        self.formLayout_generalInfo.setWidget(9, QFormLayout.LabelRole, self.label_bankBIC)
+        self.formLayout_generalInfo.setWidget(10, QFormLayout.LabelRole, self.label_bankBIC)
 
         self.lineEdit_fullAddress = QLineEdit(self.groupBox_generalInfo)
         self.lineEdit_fullAddress.setObjectName(u"lineEdit_fullAddress")
@@ -194,27 +194,37 @@ class Ui_Dialog(object):
         self.lineEdit_companyTelephone = QLineEdit(self.groupBox_generalInfo)
         self.lineEdit_companyTelephone.setObjectName(u"lineEdit_companyTelephone")
 
-        self.formLayout_generalInfo.setWidget(7, QFormLayout.FieldRole, self.lineEdit_companyTelephone)
+        self.formLayout_generalInfo.setWidget(8, QFormLayout.FieldRole, self.lineEdit_companyTelephone)
 
         self.lineEdit_bankIBAN = QLineEdit(self.groupBox_generalInfo)
         self.lineEdit_bankIBAN.setObjectName(u"lineEdit_bankIBAN")
 
-        self.formLayout_generalInfo.setWidget(8, QFormLayout.FieldRole, self.lineEdit_bankIBAN)
+        self.formLayout_generalInfo.setWidget(9, QFormLayout.FieldRole, self.lineEdit_bankIBAN)
 
         self.lineEdit_bankBIC = QLineEdit(self.groupBox_generalInfo)
         self.lineEdit_bankBIC.setObjectName(u"lineEdit_bankBIC")
 
-        self.formLayout_generalInfo.setWidget(9, QFormLayout.FieldRole, self.lineEdit_bankBIC)
+        self.formLayout_generalInfo.setWidget(10, QFormLayout.FieldRole, self.lineEdit_bankBIC)
 
         self.label_companyEmail = QLabel(self.groupBox_generalInfo)
         self.label_companyEmail.setObjectName(u"label_companyEmail")
 
-        self.formLayout_generalInfo.setWidget(6, QFormLayout.LabelRole, self.label_companyEmail)
+        self.formLayout_generalInfo.setWidget(7, QFormLayout.LabelRole, self.label_companyEmail)
 
         self.lineEdit_companyEmail = QLineEdit(self.groupBox_generalInfo)
         self.lineEdit_companyEmail.setObjectName(u"lineEdit_companyEmail")
 
-        self.formLayout_generalInfo.setWidget(6, QFormLayout.FieldRole, self.lineEdit_companyEmail)
+        self.formLayout_generalInfo.setWidget(7, QFormLayout.FieldRole, self.lineEdit_companyEmail)
+
+        self.label_companyAPE = QLabel(self.groupBox_generalInfo)
+        self.label_companyAPE.setObjectName(u"label_companyAPE")
+
+        self.formLayout_generalInfo.setWidget(6, QFormLayout.LabelRole, self.label_companyAPE)
+
+        self.lineEdit_companyAPE = QLineEdit(self.groupBox_generalInfo)
+        self.lineEdit_companyAPE.setObjectName(u"lineEdit_companyAPE")
+
+        self.formLayout_generalInfo.setWidget(6, QFormLayout.FieldRole, self.lineEdit_companyAPE)
 
 
         self.verticalLayout_2.addLayout(self.formLayout_generalInfo)
@@ -392,7 +402,8 @@ class Ui_Dialog(object):
         QWidget.setTabOrder(self.lineEdit_lastName, self.lineEdit_fullAddress)
         QWidget.setTabOrder(self.lineEdit_fullAddress, self.lineEdit_companySIRET)
         QWidget.setTabOrder(self.lineEdit_companySIRET, self.lineEdit_companySIREN)
-        QWidget.setTabOrder(self.lineEdit_companySIREN, self.lineEdit_companyEmail)
+        QWidget.setTabOrder(self.lineEdit_companySIREN, self.lineEdit_companyAPE)
+        QWidget.setTabOrder(self.lineEdit_companyAPE, self.lineEdit_companyEmail)
         QWidget.setTabOrder(self.lineEdit_companyEmail, self.lineEdit_companyTelephone)
         QWidget.setTabOrder(self.lineEdit_companyTelephone, self.lineEdit_bankIBAN)
         QWidget.setTabOrder(self.lineEdit_bankIBAN, self.lineEdit_bankBIC)
@@ -432,6 +443,7 @@ class Ui_Dialog(object):
         self.label_bankIBAN.setText(QCoreApplication.translate("Dialog", u"bank IBAN", None))
         self.label_bankBIC.setText(QCoreApplication.translate("Dialog", u"bank BIC", None))
         self.label_companyEmail.setText(QCoreApplication.translate("Dialog", u"Company Email", None))
+        self.label_companyAPE.setText(QCoreApplication.translate("Dialog", u"Company APE", None))
         self.groupBox_clientInfo.setTitle(QCoreApplication.translate("Dialog", u"Client Info", None))
         self.label_clientName.setText(QCoreApplication.translate("Dialog", u"Name", None))
         self.label_clientAddressfirst.setText(QCoreApplication.translate("Dialog", u"Address First Line", None))

@@ -3,7 +3,7 @@ import json
 
 class GeneralInfo:
     def __init__(self, company_name=None, first_name=None, last_name=None, full_address=None, company_email=None,
-                 company_siret=None, company_siren=None, company_phone=None, bank_iban=None, bank_bic=None):
+                 company_siret=None, company_siren=None,company_ape=None, company_phone=None,  bank_iban=None, bank_bic=None):
         self.company_name = company_name
         self.first_name = first_name
         self.last_name = last_name
@@ -11,6 +11,7 @@ class GeneralInfo:
         self.company_email = company_email
         self.company_siret = company_siret
         self.company_siren = company_siren
+        self.company_ape = company_ape
         self.company_phone = company_phone
         self.bank_iban = bank_iban
         self.bank_bic = bank_bic
@@ -23,6 +24,7 @@ class GeneralInfo:
                 'company_email': self.company_email,
                 'company_siret': self.company_siret,
                 'company_siren': self.company_siren,
+                'company_ape': self.company_ape,
                 'company_phone': self.company_phone,
                 'bank_iban': self.bank_iban,
                 'bank_bic': self.bank_bic}
@@ -37,6 +39,7 @@ class GeneralInfo:
         newgeneral.company_email = dict_from.get('company_email', "")
         newgeneral.company_siret = dict_from['company_siret']
         newgeneral.company_siren = dict_from['company_siren']
+        newgeneral.company_ape = dict_from.get('company_ape', "")
         newgeneral.company_phone = dict_from['company_phone']
         newgeneral.bank_iban = dict_from['bank_iban']
         newgeneral.bank_bic = dict_from['bank_bic']
@@ -151,6 +154,7 @@ class SaveData:
             'full_address': invoice.general.full_address,
             'company_siret': invoice.general.company_siret,
             'company_siren': invoice.general.company_siren,
+            'company_ape': invoice.general.company_ape,
             'company_phone': invoice.general.company_phone,
             'company_email': invoice.general.company_email,
             'bank_iban': invoice.general.bank_iban,
