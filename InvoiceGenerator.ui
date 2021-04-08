@@ -39,8 +39,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>744</width>
-        <height>794</height>
+        <width>727</width>
+        <height>797</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -345,6 +345,16 @@
             <item row="1" column="1">
              <widget class="QLineEdit" name="lineEdit_invoiceDate"/>
             </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_invoiceName">
+              <property name="text">
+               <string>Invoice Name</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="lineEdit_invoiceName"/>
+            </item>
            </layout>
           </item>
          </layout>
@@ -470,6 +480,35 @@
    <header>DraggableTable</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>scrollArea_main</tabstop>
+  <tabstop>comboBox_quickRecallInvoice</tabstop>
+  <tabstop>pushButton_saveQuickRecallInvoice</tabstop>
+  <tabstop>comboBox_quickRecallGeneral</tabstop>
+  <tabstop>pushButton_saveQuickRecallGeneral</tabstop>
+  <tabstop>comboBox_quickRecallClient</tabstop>
+  <tabstop>pushButton_saveQuickRecallClient</tabstop>
+  <tabstop>lineEdit_companyName</tabstop>
+  <tabstop>lineEdit_firstName</tabstop>
+  <tabstop>lineEdit_lastName</tabstop>
+  <tabstop>lineEdit_fullAddress</tabstop>
+  <tabstop>lineEdit_companySIRET</tabstop>
+  <tabstop>lineEdit_companySIREN</tabstop>
+  <tabstop>lineEdit_companyEmail</tabstop>
+  <tabstop>lineEdit_companyTelephone</tabstop>
+  <tabstop>lineEdit_bankIBAN</tabstop>
+  <tabstop>lineEdit_bankBIC</tabstop>
+  <tabstop>lineEdit_clientName</tabstop>
+  <tabstop>lineEdit_clientAddressFirst</tabstop>
+  <tabstop>lineEdit_clientAdressSecond</tabstop>
+  <tabstop>lineEdit_invoiceNumber</tabstop>
+  <tabstop>lineEdit_invoiceDate</tabstop>
+  <tabstop>lineEdit_invoiceName</tabstop>
+  <tabstop>tableWidget_invoiceContent</tabstop>
+  <tabstop>toolButton_add</tabstop>
+  <tabstop>toolButton_delete</tabstop>
+  <tabstop>pushButton_generateInvoice</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

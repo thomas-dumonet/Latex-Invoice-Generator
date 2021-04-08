@@ -159,7 +159,7 @@ class SaveData:
         return flatdict
 
     def save_to_file(self):
-        with open(self.pathToFile, "w") as write_file:
+        with open(self.pathToFile, "w+") as write_file:
             print(self.__save_to_dict())
             json.dump(self.__save_to_dict(), write_file, sort_keys=True, indent=4)
 

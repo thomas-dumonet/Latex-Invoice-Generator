@@ -1,25 +1,32 @@
 # -*- coding: utf-8 -*-
 import sys
-import copy
+import os
 import json
+from Pyinstaller_util import get_resource_path, get_config_path, get_exe_path, create_path_it_not_exist
 from SaveData import SaveData, GeneralInfo, ClientInfo, InvoiceInfo, InvoiceItem
 from TexGenerator import LatexTemplateGenerator
 from invoiceUI import Ui_Dialog
 from PySide2.QtWidgets import (QApplication, QMessageBox, QTableWidgetItem,
                                QDialog, QHeaderView, QMenu, QAction)
+from PySide2.QtGui import QIcon
 
 from PySide2 import QtGui
 
+APP_NAME = "Invoice Generator"
+APP_CONFIG_FOLDER="invoice generator"
 
 class MainWindow(QDialog):
     def __init__(self):
         super(MainWindow, self).__init__()
+        self.setWindowTitle(APP_NAME)
+        self.setWindowIcon(QIcon(get_resource_path(os.path.join('resources', 'noun_Plant.ico'))))
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.tableWidget_invoiceContent.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
-
-        self.saveData = SaveData('data/save.json')
-        self.texGenerator = LatexTemplateGenerator()
+        self.savePath = create_path_it_not_exist(os.path.join(get_config_path(APP_CONFIG_FOLDER), 'save.json'))
+        self.saveData = SaveData(self.savePath)
+        self.outputPath = os.path.join(get_exe_path(), create_path_it_not_exist(os.path.join(get_exe_path(), 'output')))
+        self.texGenerator = LatexTemplateGenerator(get_resource_path('resources').replace('\\', '/'))
 
         self.currentGeneralInfo = GeneralInfo()
         self.currentClientInfo = ClientInfo()
@@ -74,7 +81,7 @@ class MainWindow(QDialog):
     def generate_invoice(self):
         print("generating invoice")
         self.save_data()
-        self.texGenerator.render(SaveData.asflatdict(self.currentInvoiceInfo))
+        self.texGenerator.render(SaveData.asflatdict(self.currentInvoiceInfo), create_path_it_not_exist(os.path.join(self.outputPath, self.currentInvoiceInfo.invoice_number,self.currentInvoiceInfo.invoice_number+'.tex')))
         self.update_ui()
 
     def recall_general_info(self, company_name):
@@ -103,7 +110,6 @@ class MainWindow(QDialog):
         self.ui.lineEdit_invoiceNumber.setText(newInvoice.invoice_number)
         self.ui.lineEdit_invoiceDate.setText(newInvoice.invoice_date)
 
-
         self.ui.tableWidget_invoiceContent.clearContents()
         for item in newInvoice.items:
             row_position = self.ui.tableWidget_invoiceContent.rowCount()
@@ -111,7 +117,6 @@ class MainWindow(QDialog):
             self.ui.tableWidget_invoiceContent.setItem(row_position, 0, QTableWidgetItem(str(item.product_name)))
             self.ui.tableWidget_invoiceContent.setItem(row_position, 1, QTableWidgetItem(str(item.quantity)))
             self.ui.tableWidget_invoiceContent.setItem(row_position, 2, QTableWidgetItem(str(item.price)))
-
 
         self.recall_client_info(newInvoice.client.name)
         self.recall_general_info(newInvoice.general.company_name)

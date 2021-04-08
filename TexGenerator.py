@@ -3,8 +3,9 @@ import jinja2
 import os
 from jinja2 import Template
 
+
 class LatexTemplateGenerator:
-	def __init__(self):
+	def __init__(self, templatePath):
 		self.latex_jinja_env = jinja2.Environment(
 			block_start_string = '\BLOCK{',
 			block_end_string = '}',
@@ -16,11 +17,11 @@ class LatexTemplateGenerator:
 			line_comment_prefix = '%#',
 			trim_blocks = True,
 			autoescape = False,
-			loader = jinja2.FileSystemLoader(os.path.abspath('.'))
+			loader = jinja2.FileSystemLoader(templatePath)
 		)
 
-	def render(self, data):
-		template = self.latex_jinja_env.get_template('./template/template.tex')
+	def render(self, data, filename):
+		template = self.latex_jinja_env.get_template('template.tex')
 		document = template.render(data)
-		with open("./output/output.tex", 'wb') as output:
+		with open(filename, 'wb+') as output:
 			output.write(document.encode('utf-8'))
