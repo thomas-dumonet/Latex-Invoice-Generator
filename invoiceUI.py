@@ -31,7 +31,7 @@ class Ui_Dialog(object):
         self.scrollArea_main.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 744, 794))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 727, 797))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.groupBox_quickRecall = QGroupBox(self.scrollAreaWidgetContents)
@@ -292,6 +292,16 @@ class Ui_Dialog(object):
 
         self.formLayout_invoiceInfo.setWidget(1, QFormLayout.FieldRole, self.lineEdit_invoiceDate)
 
+        self.label_invoiceName = QLabel(self.groupBox_invoiceInfo)
+        self.label_invoiceName.setObjectName(u"label_invoiceName")
+
+        self.formLayout_invoiceInfo.setWidget(2, QFormLayout.LabelRole, self.label_invoiceName)
+
+        self.lineEdit_invoiceName = QLineEdit(self.groupBox_invoiceInfo)
+        self.lineEdit_invoiceName.setObjectName(u"lineEdit_invoiceName")
+
+        self.formLayout_invoiceInfo.setWidget(2, QFormLayout.FieldRole, self.lineEdit_invoiceName)
+
 
         self.verticalLayout_5.addLayout(self.formLayout_invoiceInfo)
 
@@ -388,7 +398,8 @@ class Ui_Dialog(object):
         QWidget.setTabOrder(self.lineEdit_clientAddressFirst, self.lineEdit_clientAdressSecond)
         QWidget.setTabOrder(self.lineEdit_clientAdressSecond, self.lineEdit_invoiceNumber)
         QWidget.setTabOrder(self.lineEdit_invoiceNumber, self.lineEdit_invoiceDate)
-        QWidget.setTabOrder(self.lineEdit_invoiceDate, self.tableWidget_invoiceContent)
+        QWidget.setTabOrder(self.lineEdit_invoiceDate, self.lineEdit_invoiceName)
+        QWidget.setTabOrder(self.lineEdit_invoiceName, self.tableWidget_invoiceContent)
         QWidget.setTabOrder(self.tableWidget_invoiceContent, self.toolButton_add)
         QWidget.setTabOrder(self.toolButton_add, self.toolButton_delete)
         QWidget.setTabOrder(self.toolButton_delete, self.pushButton_generateInvoice)
@@ -425,6 +436,7 @@ class Ui_Dialog(object):
         self.groupBox_invoiceInfo.setTitle(QCoreApplication.translate("Dialog", u"Invoice Info", None))
         self.label_invoiceNumber.setText(QCoreApplication.translate("Dialog", u"Invoice Number", None))
         self.label_invoiceDate.setText(QCoreApplication.translate("Dialog", u"Invoice Date", None))
+        self.label_invoiceName.setText(QCoreApplication.translate("Dialog", u"Invoice Name", None))
         self.groupBox_invoiceContent.setTitle(QCoreApplication.translate("Dialog", u"Invoice Content", None))
         ___qtablewidgetitem = self.tableWidget_invoiceContent.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog", u"Product", None));
