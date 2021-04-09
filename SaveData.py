@@ -210,7 +210,7 @@ class SaveData:
             return False
         replaced = False
         for index, general in enumerate(self.generals):
-            if self.generals[index].company_name == general_info.company_name:
+            if self.generals[index].company_name.lower() == general_info.company_name.lower():
                 self.generals[index] = general_info
                 replaced = True
         if not replaced:
@@ -222,7 +222,7 @@ class SaveData:
             return False
         replaced = False
         for index, client in enumerate(self.clients):
-            if self.clients[index].name == client_info.name:
+            if self.clients[index].name.lower() == client_info.name.lower:
                 self.clients[index] = client_info
                 replaced = True
         if replaced == False:
