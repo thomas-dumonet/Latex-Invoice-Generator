@@ -222,7 +222,7 @@ class SaveData:
             return False
         replaced = False
         for index, client in enumerate(self.clients):
-            if self.clients[index].name.lower() == client_info.name.lower:
+            if self.clients[index].name.lower() == client_info.name.lower():
                 self.clients[index] = client_info
                 replaced = True
         if replaced == False:
