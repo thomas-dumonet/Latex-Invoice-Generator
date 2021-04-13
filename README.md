@@ -5,12 +5,12 @@ Latex invoice generator written in python
 
 Create the virtual environment
 
-`python3 -m venv venv`
+`py -m venv venv`
 
 Activate Virtual environment
 
-`.\venv\Scripts\activate.exe`
+`.\venv\Scripts\activate.bat`
 
 Install dependencies
 
-`python3 -m pip install -r requirements.txt`
+`py -m pip install -r requirements.txt`
