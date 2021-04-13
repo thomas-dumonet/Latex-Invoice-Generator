@@ -2,7 +2,7 @@
 Latex invoice generator written in python
 
 # Requirements
-* Python 3
+* Python 3.9.4
 * MikTex (or any other latex distribution but it needs to be in the path)
 
 # Installation (Windows)
@@ -21,7 +21,7 @@ Go to the root of your project directory and from the command-line run :
 
 `py -m pip install -r requirements.txt`
 
-## Generate distributable file
+## Generate app
 
 ```
 cd utils\
