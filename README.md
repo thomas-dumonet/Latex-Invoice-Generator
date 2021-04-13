@@ -21,6 +21,7 @@ Install dependencies
 
 Generate distributable file
 
-`cd utils`
-
-`generate_app.bat`
+```
+cd utils\
+generate_app.bat
+```
