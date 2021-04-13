@@ -1,7 +1,11 @@
 # Latex-Invoice-Generator
 Latex invoice generator written in python
 
-# Installation
+# Requirements
+* Python 3
+* MikTex (or any other latex distribution but it needs to be in the path)
+
+# Installation (Windows)
 
 Create the virtual environment
 
@@ -14,3 +18,8 @@ Activate Virtual environment
 Install dependencies
 
 `py -m pip install -r requirements.txt`
+
+Generate distributable file
+
+`cd utils`
+`generate_app.bat`
