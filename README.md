@@ -9,6 +9,8 @@ Latex invoice generator written in python
 
 ## Create the virtual environment
 
+Go to the root of your project directory and from the command-line run :
+
 `py -m venv venv`
 
 ## Activate Virtual environment
