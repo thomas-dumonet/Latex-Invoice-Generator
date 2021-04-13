@@ -7,21 +7,25 @@ Latex invoice generator written in python
 
 # Installation (Windows)
 
-Create the virtual environment
+## Create the virtual environment
 
 `py -m venv venv`
 
-Activate Virtual environment
+## Activate Virtual environment
 
 `.\venv\Scripts\activate.bat`
 
-Install dependencies
+## Install dependencies
 
 `py -m pip install -r requirements.txt`
 
-Generate distributable file
+## Generate distributable file
 
 ```
 cd utils\
 generate_app.bat
 ```
+
+## Run the software
+
+The resulting executable can be found in the `dist` folder
