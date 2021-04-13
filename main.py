@@ -61,7 +61,7 @@ class MainWindow(QDialog):
         print(stdOut)
         print("Standard Error:")
         print(stdErr)
-        if(not stdErr and exitCode == 0):
+        if(exitCode == 0):
             self.success_message('Invoice Generated successfully')
         self.ui.progressBar.setMaximum(1)
 
